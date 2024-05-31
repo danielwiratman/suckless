@@ -63,7 +63,17 @@ static const char unknown_str[] = "n/a";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
+
+static char vol[] = "/usr/bin/wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'";
+
 static const struct arg args[] = {
 	/* function format          argument */
-	{ datetime, "%s",           "%F %T" },
+	{ wifi_essid, "WIFI: %s", "wlan0" },
+	{ ipv4, " | IP: %s", "wlan0" },
+	{ netspeed_rx, " | Down: %s", "wlan0" },
+	{ netspeed_tx, " | Up: %s", "wlan0" },
+	{ run_command, " | Vol: %s%%", vol },
+	{ battery_state, " | Bat(%s):", "BAT1" },
+	{ battery_perc, " %s%%", "BAT1" },
+	{ datetime, " | %s", "%F %T" },
 };

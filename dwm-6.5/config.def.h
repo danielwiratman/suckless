@@ -61,6 +61,14 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "microsoft-edge-stable", NULL };
 
+static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%+",      NULL };
+static const char *downvol[]    = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%-",      NULL };
+static const char *mutevol[]    = { "/usr/bin/wpctl",   "set-mute",   "@DEFAULT_AUDIO_SINK@",      "toggle",   NULL };
+static const char *light_up[]   = { "/usr/bin/brightnessctl",   "-d", "amdgpu_bl2", "set", "5%+", NULL };
+static const char *light_down[] = { "/usr/bin/brightnessctl",   "-d", "amdgpu_bl2", "set", "5%-", NULL };
+
+#include <X11/XF86keysym.h>
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
@@ -98,6 +106,11 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      try_quit,       {0} },
 	{ MODKEY|ShiftMask|ControlMask, XK_q,      quit,           {0} },
+	{ 0,         	                XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+	{ 0,             	        XF86XK_AudioMute, spawn, {.v = mutevol } },
+	{ 0,                     	XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ 0,				XF86XK_MonBrightnessUp,		spawn,	{.v = light_up} },
+	{ 0,				XF86XK_MonBrightnessDown,	spawn,	{.v = light_down} },
 };
 
 /* button definitions */
