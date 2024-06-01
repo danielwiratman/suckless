@@ -1,5 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
+#include "maximize.h"
+#include <X11/XF86keysym.h>
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -60,6 +63,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "microsoft-edge-stable", NULL };
+static const char *obsidiancmd[]  = { "obsidian", NULL };
+static const char *flameshotcmd[]  = { "flameshot", "gui", NULL };
 
 static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%+",      NULL };
 static const char *downvol[]    = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%-",      NULL };
@@ -67,14 +72,14 @@ static const char *mutevol[]    = { "/usr/bin/wpctl",   "set-mute",   "@DEFAULT_
 static const char *light_up[]   = { "/usr/bin/brightnessctl",   "-d", "amdgpu_bl2", "set", "5%+", NULL };
 static const char *light_down[] = { "/usr/bin/brightnessctl",   "-d", "amdgpu_bl2", "set", "5%-", NULL };
 
-#include <X11/XF86keysym.h>
-
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,         	        XK_t, 	   spawn,          {.v = termcmd } },
 	{ MODKEY,         	        XK_b, 	   spawn,          {.v = browsercmd } },
+	{ MODKEY,         	        XK_o, 	   spawn,          {.v = obsidiancmd } },
+	{ MODKEY|ShiftMask,		XK_s, 	   spawn,          {.v = flameshotcmd } },
 	{ MODKEY|ShiftMask, 		XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
