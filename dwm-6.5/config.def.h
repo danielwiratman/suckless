@@ -1,6 +1,5 @@
 /* See LICENSE file for copyright and license details. */
 
-#include "maximize.h"
 #include <X11/XF86keysym.h>
 
 /* appearance */
