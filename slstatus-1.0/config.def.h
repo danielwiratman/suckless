@@ -71,7 +71,6 @@ static const struct arg args[] = {
 	{ netspeed_rx, "Down: %s", "wlan0" },
 	{ netspeed_tx, " | Up: %s", "wlan0" },
 	{ wifi_essid, " | WIFI: %s", "wlan0" },
-	{ wifi_perc, " (%s%%)", "wlan0" },
 	{ ipv4, " | IP: %s", "wlan0" },
 	{ run_command, " | Vol: %s", vol },
 	{ battery_state, " | Bat(%s):", "BAT1" },
