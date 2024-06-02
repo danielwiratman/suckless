@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 1000;
+const unsigned int interval = 100;
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
@@ -71,6 +71,7 @@ static const struct arg args[] = {
 	{ netspeed_rx, "Down: %s", "wlan0" },
 	{ netspeed_tx, " | Up: %s", "wlan0" },
 	{ wifi_essid, " | WIFI: %s", "wlan0" },
+	{ wifi_perc, " (%s%%)", "wlan0" },
 	{ ipv4, " | IP: %s", "wlan0" },
 	{ run_command, " | Vol: %s", vol },
 	{ battery_state, " | Bat(%s):", "BAT1" },
