@@ -1,7 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 100;
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
@@ -68,10 +67,12 @@ static char vol[] = "/usr/bin/wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ if 
 
 static const struct arg args[] = {
 	/* function format          argument */
-	{ netspeed_rx, "Down: %s", "wlan0" },
-	{ netspeed_tx, " | Up: %s", "wlan0" },
-	{ wifi_essid, " | WIFI: %s", "wlan0" },
-	{ ipv4, " | IP: %s", "wlan0" },
+	{ netspeed_rx, "Dw/Up: %8s/", "wlp2s0" },
+	{ netspeed_tx, "%8s", "wlp2s0" },
+	{ cpu_perc, " | CPU/RAM: %2s%%/", NULL },
+	{ ram_perc, "%2s%%", NULL },
+	{ wifi_essid, " | WIFI: %s (", "wlp2s0" },
+	{ ipv4, "%s)", "wlp2s0" },
 	{ run_command, " | Vol: %s", vol },
 	{ battery_state, " | Bat(%s):", "BAT1" },
 	{ battery_perc, " %s%%", "BAT1" },
