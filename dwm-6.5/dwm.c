@@ -1883,6 +1883,17 @@ setmfact(const Arg *arg)
 
 	if (!arg || !selmon->lt[selmon->sellt]->arrange)
 		return;
+
+  if (arg->i == 2507) {
+    selmon->mfact = 0.8;
+    arrange(selmon);
+    return;
+  } else if (arg->i == -2507) {
+    selmon->mfact = 0.2;
+    arrange(selmon);
+    return;
+  }
+
 	f = arg->f < 1.0 ? arg->f + selmon->mfact : arg->f - 1.0;
 	if (f < 0.05 || f > 0.95)
 		return;
