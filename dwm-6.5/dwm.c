@@ -160,6 +160,7 @@ struct Monitor
 {
 	char ltsymbol[16];
 	float mfact;
+  int kindaMaximized;
 	int nmaster;
 	int num;
 	int by;				/* bar geometry */
@@ -255,6 +256,7 @@ static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
 static void setlayout(const Arg *arg);
+static void semiMaximize(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
@@ -1875,6 +1877,24 @@ setlayout(const Arg *arg)
 		drawbar(selmon);
 }
 
+void
+semiMaximize(const Arg *arg)
+{
+  if (selmon->kindaMaximized) {
+    Arg arg = {
+      .i = 2507
+    };
+    setmfact(&arg);
+    selmon->kindaMaximized = 0;
+  } else {
+    Arg arg = {
+      .i = -2507
+    };
+    setmfact(&arg);
+    selmon->kindaMaximized = 1;
+  }
+}
+
 /* arg > 1.0 will set mfact absolutely */
 void
 setmfact(const Arg *arg)
@@ -1885,11 +1905,11 @@ setmfact(const Arg *arg)
 		return;
 
   if (arg->i == 2507) {
-    selmon->mfact = 0.8;
+    selmon->mfact = 0.6;
     arrange(selmon);
     return;
   } else if (arg->i == -2507) {
-    selmon->mfact = 0.2;
+    selmon->mfact = 0.4;
     arrange(selmon);
     return;
   }
