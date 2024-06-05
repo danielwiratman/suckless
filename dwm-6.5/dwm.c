@@ -190,6 +190,7 @@ typedef struct
 
 /* function declarations */
 static void maximize(int x, int y, int w, int h);
+static void aspectresize(const Arg *arg);
 static void togglemaximize(const Arg *arg);
 static void toggleverticalmax(const Arg *arg);
 static void togglehorizontalmax(const Arg *arg);
@@ -333,6 +334,29 @@ struct NumTags
 };
 
 /* function implementations */
+
+void
+aspectresize(const Arg *arg)
+{
+	/* only floating windows can be moved */
+	Client *c;
+	c = selmon->sel;
+	float ratio;
+	int w, h, nw, nh;
+
+	if (!c || !arg)
+		return;
+	if (selmon->lt[selmon->sellt]->arrange && !c->isfloating)
+		return;
+
+	ratio = (float) c->w / (float) c->h;
+	nh = c->h + arg->i;
+	nw = ratio * nh;
+
+	XRaiseWindow(dpy, c->win);
+	resize(c, c->x, c->y, nw, nh, True);
+}
+
 void
 applyrules(Client *c)
 {
