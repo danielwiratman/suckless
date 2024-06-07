@@ -69,8 +69,8 @@ static const char *flameshotcmd[]  = { "flameshot", "gui", NULL };
 static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%+",      NULL };
 static const char *downvol[]    = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%-",      NULL };
 static const char *mutevol[]    = { "/usr/bin/wpctl",   "set-mute",   "@DEFAULT_AUDIO_SINK@",      "toggle",   NULL };
-static const char *light_up[]   = { "/usr/bin/brightnessctl",   "-d", "amdgpu_bl2", "set", "5%+", NULL };
-static const char *light_down[] = { "/usr/bin/brightnessctl",   "-d", "amdgpu_bl2", "set", "5%-", NULL };
+static const char *light_up[]   = { "/usr/bin/brightnessctl", "set", "10%+", NULL };
+static const char *light_down[] = { "/usr/bin/brightnessctl", "set", "10%-", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
