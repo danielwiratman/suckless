@@ -60,6 +60,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *screenlayoutmenucmd[] = { "run_screenlayout", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *clipmenucmd[] = { "clipmenu", "-l", "5", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "microsoft-edge-stable", NULL };
@@ -81,6 +82,7 @@ static const Key keys[] = {
 	{ MODKEY,         	        XK_b, 	   spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,         	        XK_o, 	   spawn,          {.v = obsidiancmd } },
 	{ MODKEY|ShiftMask,		XK_s, 	   spawn,          {.v = flameshotcmd } },
+	{ MODKEY,		XK_p, 	   spawn,          {.v = screenlayoutmenucmd } },
 	{ MODKEY|ShiftMask, 		XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
