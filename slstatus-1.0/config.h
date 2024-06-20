@@ -68,8 +68,8 @@ static char vol[] = "/usr/bin/wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ if 
 
 static const struct arg args[] = {
 	/* function format          argument */
-	{ netspeed_rx, "Dw/Up: %8s/", "wlp2s0" },
-	{ netspeed_tx, "%8s", "wlp2s0" },
+	{ netspeed_rx, "Dw/Up: %8s/", "wlan0" },
+	{ netspeed_tx, "%8s", "wlan0" },
 	{ cpu_perc, " | CPU/RAM: %2s%%/", NULL },
 	{ ram_perc, "%2s%%", NULL },
 	// { wifi_essid, " | WIFI: %s (", "wlan0" },

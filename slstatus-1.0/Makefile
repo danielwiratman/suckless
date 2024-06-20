@@ -44,6 +44,7 @@ slstatus: slstatus.o $(COM:=.o) $(REQ:=.o)
 	$(CC) -o $@ $(LDFLAGS) $(COM:=.o) $(REQ:=.o) slstatus.o $(LDLIBS)
 
 clean:
+	rm -f config.h
 	rm -f slstatus slstatus.o $(COM:=.o) $(REQ:=.o) slstatus-${VERSION}.tar.gz
 
 dist:
@@ -57,7 +58,6 @@ dist:
 	rm -rf "slstatus-$(VERSION)"
 
 install: all
-	rm -f config.h
 	mkdir -p "$(DESTDIR)$(PREFIX)/bin"
 	cp -f slstatus "$(DESTDIR)$(PREFIX)/bin"
 	chmod 755 "$(DESTDIR)$(PREFIX)/bin/slstatus"
