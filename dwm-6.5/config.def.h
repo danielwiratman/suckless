@@ -71,6 +71,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "microsoft-edge-stable", NULL };
 static const char *obsidiancmd[]  = { "obsidian", NULL };
 static const char *flameshotcmd[]  = { "flameshot", "gui", NULL };
+static const char *thunarcmd[]  = { "thunar", NULL };
 
 static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%+",      NULL };
 static const char *downvol[]    = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%-",      NULL };
@@ -88,6 +89,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask, 		XK_o, 	   spawn,          {.v = obsidiancmd } },
 	{ MODKEY|ShiftMask,		XK_s, 	   spawn,          {.v = flameshotcmd } },
 	{ MODKEY,			XK_p, 	   spawn,          {.v = screenlayoutmenucmd } },
+	{ MODKEY,			XK_e, 	   spawn,          {.v = thunarcmd } },
 	{ MODKEY|ShiftMask, 		XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
