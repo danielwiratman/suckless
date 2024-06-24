@@ -4,3 +4,4 @@ dmenu-5.3/dmenu
 slstatus-1.0/slstatus
 *.orig
 *.o
+config.h
