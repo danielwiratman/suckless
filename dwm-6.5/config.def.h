@@ -68,7 +68,6 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *screenlayoutmenucmd[] = { "run_screenlayout", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *clipmenucmd[] = { "clipmenu", "-l", "5", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *termtmuxcmd[]  = { "sttmux", NULL };
 static const char *browsercmd[]  = { "microsoft-edge-stable", NULL };
 static const char *obsidiancmd[]  = { "obsidian", NULL };
 static const char *flameshotcmd[]  = { "flameshot", "gui", NULL };
@@ -84,7 +83,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_v,	   spawn,          {.v = clipmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termtmuxcmd } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,         	        XK_t, 	   spawn,          {.v = termcmd } },
 	{ MODKEY,         	        XK_b, 	   spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask, 		XK_o, 	   spawn,          {.v = obsidiancmd } },
